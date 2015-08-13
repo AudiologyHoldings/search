@@ -459,7 +459,7 @@ class SearchableBehavior extends ModelBehavior {
 			$conditionsAdd = $Model->{$field['method']}($data, $field);
 			// if our conditions function returns something empty, nothing to merge in
 			if (!empty($conditionsAdd)) {
-				$conditions = Hash::merge($conditions, (array)$conditionsAdd);
+				$conditions = array_merge($conditions, (array)$conditionsAdd);
 			}
 		}
 		return $conditions;
