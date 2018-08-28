@@ -73,11 +73,11 @@ class Tagged extends CakeTestModel {
 }
 
 /**
- * Article test model
+ * SearchableArticle test model
  *
  * Contains various find and condition methods used by the tests below.
  */
-class Article extends CakeTestModel {
+class SearchableArticle extends CakeTestModel {
 
 /**
  * Attach the SearchableBehavior by default
@@ -179,7 +179,7 @@ class Article extends CakeTestModel {
 class SearchableBehaviorTest extends CakeTestCase {
 
 /**
- * Article test model
+ * SearchableArticle test model
  *
  * @var
  */
@@ -198,14 +198,14 @@ class SearchableBehaviorTest extends CakeTestCase {
 	);
 
 /**
- * Load Article test model
+ * Load SearchableArticle test model
  *
  * @return void
  */
 	public function setUp() {
 		parent::setUp();
 
-		$this->Article = ClassRegistry::init('Article');
+		$this->Article = ClassRegistry::init('SearchableArticle');
 	}
 
 /**
