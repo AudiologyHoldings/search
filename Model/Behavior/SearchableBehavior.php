@@ -9,6 +9,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('ModelBehavior', 'Model');
+App::uses('CakeText', 'Utility');
 
 /**
  * Searchable behavior
@@ -355,17 +356,9 @@ class SearchableBehavior extends ModelBehavior {
  */
 	protected function _connectedLike($value, $field, $fieldName, $likeMethod = 'LIKE') {
 		$or = array();
-		if (Configure::version() < '2.7') {
-			$orValues = String::tokenize($value, $field['connectorOr']);
-		} else {
-			$orValues = CakeText::tokenize($value, $field['connectorOr']);
-		}
+		$orValues = CakeText::tokenize($value, $field['connectorOr']);
 		foreach ($orValues as $orValue) {
-			if (Configure::version() < '2.7') {
-				$andValues = String::tokenize($orValue, $field['connectorAnd']);
-			} else {
-				$andValues = CakeText::tokenize($orValue, $field['connectorAnd']);
-			}
+			$andValues = CakeText::tokenize($orValue, $field['connectorAnd']);
 			$and = array();
 			foreach ($andValues as $andValue) {
 				$and[] = array($fieldName . " " . $likeMethod => $field['before'] . $andValue . $field['after']);
